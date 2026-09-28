@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pokémon Card Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <div>
+                <p class="small-title">
+                    API HOMEWORK · POKÉDEX LAB
+                </p>
+
+                <h1>
+                    Pokémon Card Explorer
+                </h1>
+
+                <p class="description">
+                    Search the PokeAPI and display Pokémon
+                    information in a trading-card style interface.
+                </p>
+            </div>
+
+            <div class="api-status">
+                <span class="status-dot"></span>
+                POKEAPI
+            </div>
+
+        </header>
+
+
+        <!-- Search Section -->
+
+        <section class="search-box">
+
+            <div class="search-heading">
+
+                <div>
+                    <p class="small-title">
+                        LIVE SEARCH
+                    </p>
+
+                    <h2>
+                        Find a Pokémon
+                    </h2>
+                </div>
+
+                <p class="endpoint">
+                    GET /api/v2/pokemon/{name}
+                </p>
+
+            </div>
+
+
+            <form id="searchForm">
+
+                <div class="input-container">
+
+                    <input
+                        type="text"
+                        id="pokemonInput"
+                        placeholder="Enter Pokémon name..."
+                        value="pikachu"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="clearButton"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="searchButton"
+                >
+                    Search ↗
+                </button>
+
+            </form>
+
+
+            <!-- Quick Search -->
+
+            <div class="quick-search">
+
+                <span>
+                    Quick search:
+                </span>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-pokemon="pikachu"
+                >
+                    Pikachu
+                </button>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-pokemon="charizard"
+                >
+                    Charizard
+                </button>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-pokemon="bulbasaur"
+                >
+                    Bulbasaur
+                </button>
+
+                <button
+                    type="button"
+                    class="quick-button"
+                    data-pokemon="aipom"
+                >
+                    Aipom
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Status -->
+
+        <div id="status"></div>
+
+
+        <!-- Pokémon Result -->
+
+        <section id="result">
+
+            <div class="message-card">
+
+                <h2>
+                    Loading Pokémon...
+                </h2>
+
+                <p>
+                    Please wait while Pikachu is loading.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+
+        <footer>
+
+            <span>
+                Built for API homework
+            </span>
+
+            <a
+                href="https://pokeapi.co/docs/v2"
+                target="_blank"
+            >
+                PokeAPI Documentation ↗
+            </a>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
