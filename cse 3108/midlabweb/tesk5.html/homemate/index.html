@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeMate - Pantry Manager</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      margin: 30px; 
+      background-color: #f5f5f5; 
+    }
+    .container { 
+      max-width: 600px; 
+      margin: 0 auto; 
+      background: white; 
+      padding: 20px; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    h2, h3 { color: #333; }
+    .form-group { margin-bottom: 12px; }
+    input { 
+      width: 95%; 
+      padding: 8px; 
+      border: 1px solid #ccc; 
+      border-radius: 4px; 
+    }
+    button { 
+      padding: 10px 15px; 
+      background-color: #28a745; 
+      color: white; 
+      border: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      font-weight: bold; 
+    }
+    button:hover { background-color: #218838; }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 20px; 
+    }
+    th, td { 
+      border: 1px solid #ddd; 
+      padding: 10px; 
+      text-align: left; 
+    }
+    th { background-color: #f8f9fa; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🏠 HomeMate Pantry</h2>
+
+    
+    <div>
+      <h3>Add New Item</h3>
+      <div class="form-group">
+        <input type="text" id="itemName" placeholder="Item Name (e.g., Milk)">
+      </div>
+      <div class="form-group">
+        <input type="text" id="itemQuantity" placeholder="Quantity (e.g., 2)">
+      </div>
+      <div class="form-group">
+        <input type="text" id="itemUnit" placeholder="Unit (e.g., Liters)">
+      </div>
+      <div class="form-group">
+        <input type="text" id="expiryDate" placeholder="Expiry Date / Days (e.g., 7)">
+      </div>
+      <button id="addBtn">Save Item</button>
+    </div>
+
+    <hr style="margin: 20px 0;">
+
+    
+    <h3>Pantry Items List</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Unit</th>
+          <th>Expiry</th>
+        </tr>
+      </thead>
+      <tbody id="pantryTableBody">
+        <tr><td colspan="4">Loading data...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyDjGiCtqfhjrV63QghXjQmZsNzR6HzY1cc",
+      authDomain: "homemate-b52d6.firebaseapp.com",
+      projectId: "homemate-b52d6",
+      storageBucket: "homemate-b52d6.firebasestorage.app",
+      messagingSenderId: "34172977033",
+      appId: "1:34172977033:web:a8f0b4147e3f233e426b58",
+      measurementId: "G-ZNKXVZ86KV"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const tableBody = document.getElementById("pantryTableBody");
+    const addBtn = document.getElementById("addBtn");
+
+    
+    async function loadItems() {
+      tableBody.innerHTML = "";
+      try {
+        const querySnapshot = await getDocs(collection(db, "pantry_items"));
+        querySnapshot.forEach((doc) => {
+          const item = doc.data();
+          const row = `
+            <tr>
+              <td><b>${item.name || ''}</b></td>
+              <td>${item.quantity || ''}</td>
+              <td>${item.unit || ''}</td>
+              <td>${item.expiry_date || ''}</td>
+            </tr>
+          `;
+          tableBody.innerHTML += row;
+        });
+      } catch (error) {
+        console.error("Error loading items: ", error);
+      }
+    }
+
+    
+    addBtn.addEventListener("click", async () => {
+      const name = document.getElementById("itemName").value;
+      const quantity = document.getElementById("itemQuantity").value;
+      const unit = document.getElementById("itemUnit").value;
+      const expiry_date = document.getElementById("expiryDate").value;
+
+      if (!name) {
+        alert("Please enter the item name!");
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "pantry_items"), {
+          householdId: "hh_101",
+          name: name,
+          quantity: quantity,
+          unit: unit,
+          expiry_date: expiry_date
+        });
+
+        
+        document.getElementById("itemName").value = "";
+        document.getElementById("itemQuantity").value = "";
+        document.getElementById("itemUnit").value = "";
+        document.getElementById("expiryDate").value = "";
+
+        
+        loadItems();
+      } catch (error) {
+        console.error("Error adding item: ", error);
+      }
+    });
+
+    
+    loadItems();
+  </script>
+</body>
+</html>

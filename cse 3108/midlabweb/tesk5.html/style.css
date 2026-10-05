@@ -1,8 +1,4 @@
-/* =========================
-   GENERAL
-========================= */
-
-* {
+ {
     box-sizing: border-box;
 }
 
@@ -47,11 +43,6 @@ button {
     cursor: pointer;
 }
 
-
-/* =========================
-   MAIN CONTAINER
-========================= */
-
 .container {
     width: min(
         1120px,
@@ -61,10 +52,6 @@ button {
     margin: 30px auto 40px;
 }
 
-
-/* =========================
-   HEADER
-========================= */
 
 .header {
     display: flex;
@@ -155,9 +142,6 @@ button {
 }
 
 
-/* =========================
-   SEARCH BOX
-========================= */
 
 .search-box {
     padding: 22px;
@@ -203,9 +187,6 @@ button {
 }
 
 
-/* =========================
-   FORM
-========================= */
 
 #searchForm {
     display: grid;
@@ -257,9 +238,6 @@ button {
     color: #71819a;
 }
 
-
-/* Clear */
-
 #clearButton {
     position: absolute;
 
@@ -284,7 +262,7 @@ button {
 }
 
 
-/* Search Button */
+
 
 #searchButton {
     height: 50px;
@@ -317,9 +295,6 @@ button {
 }
 
 
-/* =========================
-   QUICK SEARCH
-========================= */
 
 .quick-search {
     display: flex;
@@ -362,9 +337,7 @@ button {
 }
 
 
-/* =========================
-   STATUS
-========================= */
+
 
 #status {
     min-height: 32px;
@@ -390,9 +363,6 @@ button {
 }
 
 
-/* =========================
-   MESSAGE CARD
-========================= */
 
 .message-card {
     min-height: 300px;
@@ -428,9 +398,7 @@ button {
 }
 
 
-/* =========================
-   LOADING SPINNER
-========================= */
+
 
 .spinner {
     width: 50px;
@@ -466,9 +434,7 @@ button {
 }
 
 
-/* =========================
-   POKÉMON CARD
-========================= */
+
 
 .pokemon-card {
     overflow: hidden;
@@ -493,9 +459,7 @@ button {
 }
 
 
-/* =========================
-   TOP CARD
-========================= */
+
 
 .card-top {
     display: grid;
@@ -558,9 +522,6 @@ button {
 }
 
 
-/* =========================
-   TYPES
-========================= */
 
 .types {
     display: flex;
@@ -589,11 +550,6 @@ button {
 
     text-transform: uppercase;
 }
-
-
-/* =========================
-   ARTWORK
-========================= */
 
 .art-area {
     position: relative;
@@ -666,9 +622,6 @@ button {
 }
 
 
-/* =========================
-   DETAILS
-========================= */
 
 .details {
     display: grid;
@@ -716,10 +669,6 @@ button {
 }
 
 
-/* =========================
-   BOTTOM SECTIONS
-========================= */
-
 .bottom-section {
     display: grid;
 
@@ -745,9 +694,7 @@ button {
 }
 
 
-/* =========================
-   STATS
-========================= */
+
 
 .stats {
     display: grid;
@@ -806,9 +753,6 @@ button {
 }
 
 
-/* =========================
-   ABILITIES
-========================= */
 
 .abilities {
     display: flex;
@@ -839,9 +783,7 @@ button {
 }
 
 
-/* =========================
-   ERROR
-========================= */
+
 
 .error-card {
     border-color:
@@ -856,13 +798,7 @@ button {
 }
 
 .error-card p {
-    color: #d3a4aa;
-}
-
-
-/* =========================
-   TYPE COLORS
-========================= */
+    color: #d
 
 .type-electric {
     --type-accent: #f6d64d;
@@ -963,9 +899,6 @@ button {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
 
 footer {
     display: flex;
@@ -985,10 +918,6 @@ footer a {
     color: #7694b5;
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media (max-width: 820px) {
 
